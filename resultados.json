@@ -1,0 +1,533 @@
+[
+ {
+  "id": "CB-01",
+  "ciclo": "Ciclo 1",
+  "descripcion": "RUT válido con puntos y guion es aceptado",
+  "esperado": "Valor aceptado",
+  "obtenido": "Sin error (valor aceptado)",
+  "estado": "APROBADA",
+  "obs": "validarRut('12.345.678-5')"
+ },
+ {
+  "id": "CB-02",
+  "ciclo": "Ciclo 1",
+  "descripcion": "RUT válido sin formato es aceptado",
+  "esperado": "Valor aceptado",
+  "obtenido": "Sin error (valor aceptado)",
+  "estado": "APROBADA",
+  "obs": "validarRut('12345678-5')"
+ },
+ {
+  "id": "CB-03",
+  "ciclo": "Ciclo 1",
+  "descripcion": "DV incorrecto es rechazado (módulo 11)",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"RUT inválido: el dígito verificador no corresponde.\"",
+  "estado": "APROBADA",
+  "obs": "validarRut('12.345.678-9')"
+ },
+ {
+  "id": "CB-04",
+  "ciclo": "Ciclo 1",
+  "descripcion": "RUT con largo insuficiente es rechazado",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"Formato inválido. Use 12345678-5 o 12.345.678-5.\"",
+  "estado": "APROBADA",
+  "obs": "validarRut('1234-5')"
+ },
+ {
+  "id": "CB-05",
+  "ciclo": "Ciclo 1",
+  "descripcion": "RUT vacío es rechazado",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"El RUT es obligatorio.\"",
+  "estado": "APROBADA",
+  "obs": "validarRut('')"
+ },
+ {
+  "id": "CB-06",
+  "ciclo": "Ciclo 1",
+  "descripcion": "RUT con DV = K es aceptado",
+  "esperado": "Valor aceptado",
+  "obtenido": "Sin error (valor aceptado)",
+  "estado": "APROBADA",
+  "obs": "validarRut('15.467.893-K')"
+ },
+ {
+  "id": "CB-07",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Nombre con tilde y espacio es aceptado",
+  "esperado": "Valor aceptado",
+  "obtenido": "Sin error (valor aceptado)",
+  "estado": "APROBADA",
+  "obs": "validarNombres('Juan Andrés')"
+ },
+ {
+  "id": "CB-08",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Nombre con dígitos es rechazado",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"Nombres solo admite letras, espacios, guion y apóstrofe.\"",
+  "estado": "APROBADA",
+  "obs": "validarNombres('Juan123')"
+ },
+ {
+  "id": "CB-09",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Nombre de 1 carácter es rechazado (mínimo 2)",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"Nombres debe tener entre 2 y 40 caracteres.\"",
+  "estado": "APROBADA",
+  "obs": "validarNombres('J')"
+ },
+ {
+  "id": "CB-10",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Apellido compuesto con guion es aceptado",
+  "esperado": "Valor aceptado",
+  "obtenido": "Sin error (valor aceptado)",
+  "estado": "APROBADA",
+  "obs": "validarApellidos('Pérez-Soto')"
+ },
+ {
+  "id": "CB-11",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Dirección válida es aceptada",
+  "esperado": "Valor aceptado",
+  "obtenido": "Sin error (valor aceptado)",
+  "estado": "APROBADA",
+  "obs": "validarDireccion('Av. Los Leones 1234')"
+ },
+ {
+  "id": "CB-12",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Dirección menor a 5 caracteres es rechazada",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"La dirección debe tener entre 5 y 80 caracteres.\"",
+  "estado": "APROBADA",
+  "obs": "validarDireccion('Av 1')"
+ },
+ {
+  "id": "CB-13",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Ciudad con tilde es aceptada",
+  "esperado": "Valor aceptado",
+  "obtenido": "Sin error (valor aceptado)",
+  "estado": "APROBADA",
+  "obs": "validarCiudad('Valparaíso')"
+ },
+ {
+  "id": "CB-14",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Ciudad con dígitos es rechazada",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"La ciudad solo admite letras y espacios.\"",
+  "estado": "APROBADA",
+  "obs": "validarCiudad('Santiago 2')"
+ },
+ {
+  "id": "CB-15",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Móvil con prefijo +56 es aceptado",
+  "esperado": "Valor aceptado",
+  "obtenido": "Sin error (valor aceptado)",
+  "estado": "APROBADA",
+  "obs": "validarTelefono('+56912345678')"
+ },
+ {
+  "id": "CB-16",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Móvil sin prefijo es aceptado",
+  "esperado": "Valor aceptado",
+  "obtenido": "Sin error (valor aceptado)",
+  "estado": "APROBADA",
+  "obs": "validarTelefono('912345678')"
+ },
+ {
+  "id": "CB-17",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Teléfono de largo insuficiente es rechazado",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"Formato inválido. Use +56 9 1234 5678 (9 dígitos nacionales).\"",
+  "estado": "APROBADA",
+  "obs": "validarTelefono('12345')"
+ },
+ {
+  "id": "CB-18",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Teléfono con letras es rechazado",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"El teléfono solo admite dígitos.\"",
+  "estado": "APROBADA",
+  "obs": "validarTelefono('9abc45678')"
+ },
+ {
+  "id": "CB-19",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Correo con formato válido es aceptado",
+  "esperado": "Valor aceptado",
+  "obtenido": "Sin error (valor aceptado)",
+  "estado": "APROBADA",
+  "obs": "validarEmail('juan.perez@correo.cl')"
+ },
+ {
+  "id": "CB-20",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Correo sin @ es rechazado",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"Correo electrónico inválido. Ejemplo: nombre@correo.cl\"",
+  "estado": "APROBADA",
+  "obs": "validarEmail('juan.perez.correo.cl')"
+ },
+ {
+  "id": "CB-21",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Correo sin dominio de primer nivel es rechazado",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"Correo electrónico inválido. Ejemplo: nombre@correo.cl\"",
+  "estado": "APROBADA",
+  "obs": "validarEmail('juan@correo')"
+ },
+ {
+  "id": "CB-22",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Fecha pasada válida es aceptada",
+  "esperado": "Valor aceptado",
+  "obtenido": "Sin error (valor aceptado)",
+  "estado": "APROBADA",
+  "obs": "validarFechaNacimiento('1990-05-14')"
+ },
+ {
+  "id": "CB-23",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Fecha futura es rechazada",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"La fecha de nacimiento no puede ser futura.\"",
+  "estado": "APROBADA",
+  "obs": "validarFechaNacimiento('2099-01-01')"
+ },
+ {
+  "id": "CB-24",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Edad mayor a 120 años es rechazada",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"La edad no puede superar los 120 años.\"",
+  "estado": "APROBADA",
+  "obs": "validarFechaNacimiento('1850-01-01')"
+ },
+ {
+  "id": "CB-25",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Estado civil sin seleccionar es rechazado",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"Debe seleccionar un estado civil.\"",
+  "estado": "APROBADA",
+  "obs": "validarEstadoCivil('')"
+ },
+ {
+  "id": "CB-26",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Estado civil de la lista es aceptado",
+  "esperado": "Valor aceptado",
+  "obtenido": "Sin error (valor aceptado)",
+  "estado": "APROBADA",
+  "obs": "validarEstadoCivil('Casado/a')"
+ },
+ {
+  "id": "CB-27",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Comentario de 301 caracteres es rechazado",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"Los comentarios no pueden superar los 300 caracteres.\"",
+  "estado": "APROBADA",
+  "obs": "validarComentarios('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')"
+ },
+ {
+  "id": "CB-28",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Comentario vacío es aceptado (campo opcional)",
+  "esperado": "Valor aceptado",
+  "obtenido": "Sin error (valor aceptado)",
+  "estado": "APROBADA",
+  "obs": "validarComentarios('')"
+ },
+ {
+  "id": "CB-29",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Comentario con < > es rechazado (inyección)",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"No se permiten los caracteres < ni > en los comentarios.\"",
+  "estado": "APROBADA",
+  "obs": "validarComentarios('<script>')"
+ },
+ {
+  "id": "CB-30",
+  "ciclo": "Ciclo 1",
+  "descripcion": "Búsqueda de 1 carácter es rechazada",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"Ingrese al menos 2 caracteres.\"",
+  "estado": "APROBADA",
+  "obs": "validarBusqueda('P')"
+ },
+ {
+  "id": "CB-31",
+  "ciclo": "Ciclo 1",
+  "descripcion": "RUT sobre otro RUT es rechazado con aviso de largo",
+  "esperado": "Valor rechazado con mensaje",
+  "obtenido": "Rechazado: \"El RUT es demasiado largo. Borre el contenido del campo e ingréselo de nuevo.\"",
+  "estado": "APROBADA",
+  "obs": "validarRut('9.876.543-315467893K')"
+ },
+ {
+  "id": "CB-32",
+  "ciclo": "Ciclo 1",
+  "descripcion": "calcularDv('12345678') retorna el DV correcto",
+  "esperado": "DV = 5",
+  "obtenido": "DV = 5",
+  "estado": "APROBADA",
+  "obs": "Algoritmo módulo 11"
+ },
+ {
+  "id": "PF-01",
+  "ciclo": "Ciclo 2",
+  "descripcion": "Presionar Guardar con el formulario vacío",
+  "esperado": "El sistema no guarda y marca todos los campos obligatorios",
+  "obtenido": "Se muestran 10 mensajes de error. Resumen: \"No se guardó: hay 9 campos con errores.\"",
+  "estado": "APROBADA",
+  "obs": "9 campos obligatorios + resumen"
+ },
+ {
+  "id": "PF-02",
+  "ciclo": "Ciclo 2",
+  "descripcion": "Ingresar RUT 12.345.678-9 (dígito verificador erróneo)",
+  "esperado": "Mensaje de RUT inválido bajo el campo",
+  "obtenido": "Mensaje mostrado: \"RUT inválido: el dígito verificador no corresponde.\"",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PF-03",
+  "ciclo": "Ciclo 2",
+  "descripcion": "Ingresar email sin @",
+  "esperado": "Mensaje de correo inválido",
+  "obtenido": "Mensaje mostrado: \"Correo electrónico inválido. Ejemplo: nombre@correo.cl\"",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PF-04",
+  "ciclo": "Ciclo 2",
+  "descripcion": "Ingresar teléfono con letras",
+  "esperado": "Mensaje de teléfono inválido",
+  "obtenido": "Mensaje mostrado: \"El teléfono solo admite dígitos.\"",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PF-05",
+  "ciclo": "Ciclo 2",
+  "descripcion": "Ingresar fecha de nacimiento futura (2099-01-01)",
+  "esperado": "Mensaje indicando que la fecha no puede ser futura",
+  "obtenido": "Mensaje mostrado: \"La fecha de nacimiento no puede ser futura.\"",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PF-06",
+  "ciclo": "Ciclo 2",
+  "descripcion": "Dejar el combo Estado civil sin seleccionar",
+  "esperado": "Mensaje solicitando seleccionar un estado civil",
+  "obtenido": "Mensaje: \"Debe seleccionar un estado civil.\"",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PF-07",
+  "ciclo": "Ciclo 2",
+  "descripcion": "Corregir un campo previamente marcado como inválido",
+  "esperado": "El mensaje desaparece y el campo se marca como válido",
+  "obtenido": "Mensaje: \"\" / clase CSS: \"valido\"",
+  "estado": "APROBADA",
+  "obs": "Validación en vivo evento input"
+ },
+ {
+  "id": "PF-08",
+  "ciclo": "Ciclo 2",
+  "descripcion": "Escribir en Comentarios y observar el contador",
+  "esperado": "El contador refleja los caracteres escritos sobre 300",
+  "obtenido": "Contador muestra: 13/300",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PF-09",
+  "ciclo": "Ciclo 2",
+  "descripcion": "Escribir un RUT nuevo sobre uno ya formateado, sin borrar el anterior",
+  "esperado": "El campo admite el texto completo y el sistema advierte que el RUT quedó demasiado largo",
+  "obtenido": "Valor en el campo: \"12.345.678-59876543-3\". Mensaje: \"El RUT es demasiado largo. Borre el contenido del campo e ingréselo de nuevo.\"",
+  "estado": "APROBADA",
+  "obs": "Regresión del defecto de maxlength detectado en la ejecución manual"
+ },
+ {
+  "id": "PF-10",
+  "ciclo": "Ciclo 2",
+  "descripcion": "Enfocar un RUT ya válido y escribir uno nuevo sin borrarlo",
+  "esperado": "El contenido anterior se reemplaza y el nuevo RUT queda válido",
+  "obtenido": "Valor en el campo: \"9.876.543-3\". Mensaje: \"sin error\"",
+  "estado": "APROBADA",
+  "obs": "Selección automática del contenido al enfocar"
+ },
+ {
+  "id": "PB-01",
+  "ciclo": "Ciclo 3",
+  "descripcion": "Guardar una ficha nueva con todos los datos válidos",
+  "esperado": "Se almacena el registro y se confirma en pantalla",
+  "obtenido": "Aviso: \"Ficha guardada correctamente\". Registros en almacenamiento: 1",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PB-02",
+  "ciclo": "Ciclo 3",
+  "descripcion": "Verificar el formulario después de guardar",
+  "esperado": "Los campos quedan limpios para un nuevo ingreso",
+  "obtenido": "Campo RUT vacío: sí",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PB-03",
+  "ciclo": "Ciclo 3",
+  "descripcion": "Guardar un RUT ya existente y cancelar la sobrescritura",
+  "esperado": "El sistema pregunta si desea sobrescribir y, al cancelar, no modifica el registro",
+  "obtenido": "Diálogo mostrado: sí. Nombre almacenado sigue siendo \"Juan Andrés\"",
+  "estado": "APROBADA",
+  "obs": "Mensaje: Ya existe una ficha registrada con el RUT 12.345.678-5 | Paciente: Juan Andrés Pérez Soto |  | ¿Desea sobrescribir el registro existente?"
+ },
+ {
+  "id": "PB-04",
+  "ciclo": "Ciclo 3",
+  "descripcion": "Guardar un RUT ya existente y aceptar la sobrescritura",
+  "esperado": "El registro se actualiza sin duplicarse",
+  "obtenido": "Aviso: \"Ficha sobrescrita correctamente\". Nombre actualizado a \"Juan Modificado\". Total de registros: 1",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PB-05",
+  "ciclo": "Ciclo 3",
+  "descripcion": "Presionar Limpiar con datos cargados y confirmar",
+  "esperado": "Solicita confirmación y deja todos los campos en blanco",
+  "obtenido": "Todos los campos quedaron vacíos: sí",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PB-06",
+  "ciclo": "Ciclo 3",
+  "descripcion": "Presionar Limpiar con el formulario ya vacío",
+  "esperado": "Informa que no hay datos que limpiar y no pide confirmación",
+  "obtenido": "Aviso: \"El formulario ya está vacío\"",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PB-07",
+  "ciclo": "Ciclo 3",
+  "descripcion": "Presionar Cerrar y confirmar",
+  "esperado": "Cierra la ficha; si el navegador bloquea window.close() muestra la pantalla de sesión cerrada",
+  "obtenido": "Pantalla de respaldo visible: sí",
+  "estado": "APROBADA",
+  "obs": "El navegador bloquea window.close() en pestañas no abiertas por script"
+ },
+ {
+  "id": "PB-08",
+  "ciclo": "Ciclo 3",
+  "descripcion": "Recargar la página y verificar los registros",
+  "esperado": "Los registros guardados se mantienen disponibles",
+  "obtenido": "Registros tras recargar: 1. Contador en pantalla: 1 ficha",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PBQ-01",
+  "ciclo": "Ciclo 4",
+  "descripcion": "Buscar el apellido \"Pérez\" (2 pacientes registrados)",
+  "esperado": "Se listan los 2 registros coincidentes",
+  "obtenido": "Filas devueltas: 2",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PBQ-02",
+  "ciclo": "Ciclo 4",
+  "descripcion": "Buscar \"perez\" en minúsculas y sin tilde",
+  "esperado": "Devuelve los mismos 2 registros (búsqueda insensible a tildes y mayúsculas)",
+  "obtenido": "Filas devueltas: 2",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PBQ-03",
+  "ciclo": "Ciclo 4",
+  "descripcion": "Buscar por coincidencia parcial \"Gon\"",
+  "esperado": "Devuelve el registro González Ríos",
+  "obtenido": "Filas devueltas: 1",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PBQ-04",
+  "ciclo": "Ciclo 4",
+  "descripcion": "Buscar un apellido inexistente (\"Zúñiga\")",
+  "esperado": "Mensaje de sin resultados, no una tabla vacía",
+  "obtenido": "Mensaje: \"Sin resultados: no existen fichas que coincidan con la búsqueda.\"",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PBQ-05",
+  "ciclo": "Ciclo 4",
+  "descripcion": "Presionar Buscar con el campo apellido vacío",
+  "esperado": "Solicita ingresar un apellido y no ejecuta la búsqueda",
+  "obtenido": "Mensaje: \"Ingrese un apellido para buscar.\"",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PBQ-06",
+  "ciclo": "Ciclo 4",
+  "descripcion": "Buscar con dígitos (\"P3rez\")",
+  "esperado": "Rechaza la entrada indicando que solo se admiten letras",
+  "obtenido": "Mensaje: \"El apellido solo admite letras y espacios.\"",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PBQ-07",
+  "ciclo": "Ciclo 4",
+  "descripcion": "Presionar \"Ver todos\"",
+  "esperado": "Lista los 3 registros almacenados",
+  "obtenido": "Filas devueltas: 3",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PBQ-08",
+  "ciclo": "Ciclo 4",
+  "descripcion": "Cargar una ficha desde la tabla de resultados",
+  "esperado": "Los datos del paciente se cargan en el formulario para editarlos",
+  "obtenido": "RUT cargado en el formulario: 15.467.893-K",
+  "estado": "APROBADA",
+  "obs": ""
+ },
+ {
+  "id": "PBQ-09",
+  "ciclo": "Ciclo 4",
+  "descripcion": "Visualizar el formulario en pantalla de 390 px (móvil)",
+  "esperado": "El contenido se adapta sin desbordar horizontalmente",
+  "obtenido": "Ancho de desplazamiento: 390 px",
+  "estado": "APROBADA",
+  "obs": "Diseño responsivo con CSS Grid"
+ }
+]
