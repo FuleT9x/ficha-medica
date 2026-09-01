@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ficha Médica — Registro de Pacientes</title>
+<meta name="description" content="Formulario de ingreso de ficha médica con validación de campos, sobrescritura de registros y búsqueda por apellido.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">+</span>
+    <div>
+      <h1>Ficha Médica del Paciente</h1>
+      <p class="sub">Sistema de registro clínico &middot; Chile</p>
+    </div>
+  </div>
+  <span class="badge" id="contadorFichas">0 fichas</span>
+</header>
+
+<main>
+
+  <!-- ==================== FORMULARIO DE INGRESO ==================== -->
+  <section class="card" aria-labelledby="tituloForm">
+    <h2 id="tituloForm">Datos del paciente</h2>
+    <p class="hint">Los campos marcados con <span class="req">*</span> son obligatorios.</p>
+
+    <form id="fichaForm" novalidate autocomplete="off">
+
+      <div class="grid">
+
+        <div class="campo">
+          <label for="rut">RUT <span class="req">*</span></label>
+          <input type="text" id="rut" name="rut" placeholder="12.345.678-5"
+                 aria-describedby="err-rut">
+          <span class="error" id="err-rut" role="alert"></span>
+        </div>
+
+        <div class="campo">
+          <label for="nombres">Nombres <span class="req">*</span></label>
+          <input type="text" id="nombres" name="nombres" maxlength="40" placeholder="Juan Andrés"
+                 aria-describedby="err-nombres">
+          <span class="error" id="err-nombres" role="alert"></span>
+        </div>
+
+        <div class="campo">
+          <label for="apellidos">Apellidos <span class="req">*</span></label>
+          <input type="text" id="apellidos" name="apellidos" maxlength="40" placeholder="Pérez Soto"
+                 aria-describedby="err-apellidos">
+          <span class="error" id="err-apellidos" role="alert"></span>
+        </div>
+
+        <div class="campo">
+          <label for="direccion">Dirección <span class="req">*</span></label>
+          <input type="text" id="direccion" name="direccion" maxlength="80" placeholder="Av. Los Leones 1234, Depto. 52"
+                 aria-describedby="err-direccion">
+          <span class="error" id="err-direccion" role="alert"></span>
+        </div>
+
+        <div class="campo">
+          <label for="ciudad">Ciudad <span class="req">*</span></label>
+          <input type="text" id="ciudad" name="ciudad" maxlength="40" placeholder="Santiago"
+                 aria-describedby="err-ciudad">
+          <span class="error" id="err-ciudad" role="alert"></span>
+        </div>
+
+        <div class="campo">
+          <label for="telefono">Teléfono <span class="req">*</span></label>
+          <input type="tel" id="telefono" name="telefono" maxlength="16" placeholder="+56 9 1234 5678"
+                 aria-describedby="err-telefono">
+          <span class="error" id="err-telefono" role="alert"></span>
+        </div>
+
+        <div class="campo">
+          <label for="email">Email <span class="req">*</span></label>
+          <input type="text" id="email" name="email" maxlength="60" placeholder="paciente@correo.cl"
+                 aria-describedby="err-email">
+          <span class="error" id="err-email" role="alert"></span>
+        </div>
+
+        <div class="campo">
+          <label for="fechaNacimiento">Fecha de Nacimiento <span class="req">*</span></label>
+          <input type="date" id="fechaNacimiento" name="fechaNacimiento"
+                 aria-describedby="err-fechaNacimiento">
+          <span class="error" id="err-fechaNacimiento" role="alert"></span>
+        </div>
+
+        <div class="campo">
+          <label for="estadoCivil">Estado civil <span class="req">*</span></label>
+          <select id="estadoCivil" name="estadoCivil" aria-describedby="err-estadoCivil">
+            <option value="">-- Seleccione --</option>
+            <option value="Soltero/a">Soltero/a</option>
+            <option value="Casado/a">Casado/a</option>
+            <option value="Conviviente civil">Conviviente civil</option>
+            <option value="Divorciado/a">Divorciado/a</option>
+            <option value="Viudo/a">Viudo/a</option>
+          </select>
+          <span class="error" id="err-estadoCivil" role="alert"></span>
+        </div>
+
+        <div class="campo campo--ancho">
+          <label for="comentarios">Comentarios
+            <span class="contador" id="contadorComentarios">0/300</span>
+          </label>
+          <textarea id="comentarios" name="comentarios" rows="3" maxlength="300"
+                    placeholder="Antecedentes, alergias, observaciones del ingreso..."
+                    aria-describedby="err-comentarios"></textarea>
+          <span class="error" id="err-comentarios" role="alert"></span>
+        </div>
+
+      </div>
+
+      <div class="acciones">
+        <button type="submit" id="btnGuardar" class="btn btn--primary">Guardar</button>
+        <button type="button" id="btnLimpiar" class="btn btn--ghost">Limpiar</button>
+        <button type="button" id="btnCerrar"  class="btn btn--danger">Cerrar</button>
+      </div>
+
+      <p class="error error--resumen" id="errResumen" role="alert"></p>
+
+    </form>
+  </section>
+
+  <!-- ==================== BÚSQUEDA POR APELLIDO ==================== -->
+  <section class="card" aria-labelledby="tituloBusca">
+    <h2 id="tituloBusca">Buscar paciente por apellido</h2>
+
+    <form id="buscaForm" novalidate autocomplete="off">
+      <div class="busca">
+        <div class="campo">
+          <label for="buscaApellido">Apellido</label>
+          <input type="text" id="buscaApellido" name="buscaApellido" maxlength="40"
+                 placeholder="Ej: Pérez" aria-describedby="err-buscaApellido">
+          <span class="error" id="err-buscaApellido" role="alert"></span>
+        </div>
+        <button type="submit" id="btnBuscar" class="btn btn--primary">Buscar</button>
+        <button type="button" id="btnVerTodos" class="btn btn--ghost">Ver todos</button>
+      </div>
+    </form>
+
+    <div id="resultados" aria-live="polite"></div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <p>Actividad Sumativa Semana 3 &middot; Taller de Testing y Calidad de Software &middot; AIEP</p>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<div id="overlayCerrado" class="overlay" hidden>
+  <div class="overlay__caja">
+    <h2>Sesión cerrada</h2>
+    <p>El formulario fue cerrado correctamente. Los registros guardados se mantienen almacenados.</p>
+    <button type="button" id="btnReabrir" class="btn btn--primary">Volver a abrir</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
