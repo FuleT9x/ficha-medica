@@ -1,6 +1,5 @@
 # Ficha Médica — Formulario de ingreso de pacientes
 
-**Actividad Sumativa Semana 3** · Taller de Testing y Calidad de Software · Instituto Profesional AIEP
 
 
 **Sitio publicado:** https://fulet9x.github.io/ficha-medica/
